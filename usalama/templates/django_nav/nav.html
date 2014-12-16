@@ -1,0 +1,17 @@
+{% with url=nav.get_absolute_url %}
+    {% if nav.option_list or '#' not in url %}
+        <li onclick="window.location = '{% if url == '#' %}javascript:void(0){% else %}{{ url }}{% endif %}'" class="{% if nav.option_list %}dropdown {% endif %}rounded nav {{nav.nav_group}}{% if nav.active %} active{% endif %}">
+            <a href="{% if url == '#' %}javascript:void(0){% else %}{{ url }}{% endif %}" data-target="#" class="dropdown-toggle" data-toggle="dropdown" id="drop-{{ nav.name }}">
+                {{ nav.name }}
+                {% if nav.option_list %}<b class="caret"></b>{% endif %}
+            </a>
+            {% if nav.option_list %}
+                <ul class="options dropdown-menu" aria-labelledby="drop-{{ nav.name }}">
+                    {% for option in nav.option_list %}
+                        {{ option }}
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </li>
+    {% endif %}
+{% endwith %}

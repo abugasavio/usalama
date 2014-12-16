@@ -1,0 +1,11 @@
+{% extends "smartmin/create.html" %}
+
+{% block title %}{{ block.super }}  | Payment Details {% endblock title %}
+
+{% block pageicon %}<i class="fa fa-calendar"></i>{% endblock pageicon %}
+{% block pagetitle %}Payment Details{% endblock pagetitle %}
+{% block content %}
+{{ block.super }}
+{{ vehicles }}
+
+{% endblock %}
