@@ -5,7 +5,7 @@ from .models import Organization
 
 
 class SignupForm(forms.Form):
-    organization = forms.CharField(label='Organization Legal Name')
+    organization = forms.CharField(label='Organization Name', required=True)
     email = forms.EmailField()
     phone_number = PhoneNumberField(label='Phone Number')
     username = forms.CharField()
@@ -15,9 +15,7 @@ class SignupForm(forms.Form):
     def save(self):
         email = self.cleaned_data['email']
         user = User.objects.create_user(self.cleaned_data['username'], email, self.cleaned_data['password1'],)
-        # parent organization for new organization is Usalama - id #1
-        parent = Organization.objects.get(id=1)
-        Organization.objects.create(name=self.cleaned_data['organization_name'], parent=parent, email=email, user=user, author=user)
+        Organization.objects.create(name=self.cleaned_data['organization'], phone_number=self.cleaned_data['phone_number'], email=email, user=user)
 
     def clean_password2(self):
         if not 'password1' in self.cleaned_data:

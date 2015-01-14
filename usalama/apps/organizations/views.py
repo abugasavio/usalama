@@ -18,7 +18,7 @@ class Signup(FormView):
         return r'^signup/$'
 
     def form_valid(self, form):
-        form.save(self.request)
+        form.save()
         messages.success(self.request, mark_safe("Your account has been created. Please login below to proceed."))
         return redirect(settings.LOGIN_URL)
 
@@ -26,9 +26,10 @@ class Signup(FormView):
 class OrganizationVehicleCRUDL(SmartCRUDL):
     model = OrganizationVehicle
     actions = ('create', 'list', 'update',)
+    permissions = False
 
     class Create(SmartCreateView):
-        pass
+        fields = ('registration_number', 'make', 'model', 'engine_number', 'color')
 
     class List(SmartListView):
         pass
