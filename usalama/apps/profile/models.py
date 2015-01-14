@@ -1,3 +1,5 @@
+from django.db import models
+from django.contrib.auth.models import User
 #from smartmin.users.models import *  # Required for smartmin user models to be generated and imported
 from django_extensions.db.models import TimeStampedModel
 from usalama.apps.organizations.models import Organization

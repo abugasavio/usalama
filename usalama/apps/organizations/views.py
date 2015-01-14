@@ -31,8 +31,13 @@ class OrganizationVehicleCRUDL(SmartCRUDL):
     class Create(SmartCreateView):
         fields = ('registration_number', 'make', 'model', 'engine_number', 'color')
 
+        def pre_save(self, obj):
+            obj = super(OrganizationVehicleCRUDL.Create, self).pre_save(obj)
+            obj.organization = self.request.user.profile.organization
+            return obj
+
     class List(SmartListView):
-        pass
+        fields = ('registration_number', 'make', 'model', 'engine_number', 'color')
 
 
 class OrganizationDriverCRUDL(SmartCRUDL):

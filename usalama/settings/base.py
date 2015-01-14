@@ -151,7 +151,7 @@ INSTALLED_APPS = (
     # usalama apps
     'usalama.apps.registration_unit',
     'usalama.apps.organizations',
-    #'usalama.apps.users',
+    'usalama.apps.profile',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'

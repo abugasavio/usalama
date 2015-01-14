@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from phonenumber_field.formfields import PhoneNumberField
+from usalama.apps.profile.models import Profile
 from .models import Organization
 
 
@@ -15,7 +16,8 @@ class SignupForm(forms.Form):
     def save(self):
         email = self.cleaned_data['email']
         user = User.objects.create_user(self.cleaned_data['username'], email, self.cleaned_data['password1'],)
-        Organization.objects.create(name=self.cleaned_data['organization'], phone_number=self.cleaned_data['phone_number'], email=email, user=user)
+        organization = Organization.objects.create(name=self.cleaned_data['organization'], phone_number=self.cleaned_data['phone_number'], email=email, user=user)
+        Profile.object.create(user=user, organization=organization)
 
     def clean_password2(self):
         if not 'password1' in self.cleaned_data:
