@@ -11,7 +11,7 @@ class OrganizationAdmin(admin.ModelAdmin):
 
 
 class OrganizationVehicleAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('registration_number', 'make', 'model', 'engine_number', 'color')
 
 
 class OrganizationDriverAdmin(admin.ModelAdmin):

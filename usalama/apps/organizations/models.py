@@ -14,9 +14,15 @@ class Organization(TimeStampedModel):
     phone_number = PhoneNumberField()
     user = models.OneToOneField(User, related_name='organization')
 
+    def __unicode__(self):
+        return self.name
+
 @with_author
 class VehicleMake(TimeStampedModel):
     name = models.CharField(max_length=30, blank=False)
+
+    def __unicode__(self):
+        return self.name
 
 
 @with_author
@@ -38,6 +44,9 @@ class OrganizationVehicle(TimeStampedModel):
     engine_number = models.CharField(max_length=20)
     color = models.CharField(max_length=10, choices=ColorType.choices)
     organization = models.ForeignKey(Organization, related_name='organization_vehicle', null=False, blank=False)
+
+    def __unicode__(self):
+        return "{0}-{1}".format(self.registration_number, self.make)
 
 
 @with_author

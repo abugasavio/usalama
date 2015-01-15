@@ -45,9 +45,14 @@ class OrganizationDriverCRUDL(SmartCRUDL):
     actions = ('create', 'list', 'update',)
 
     class Create(SmartCreateView):
-        pass
+        fields = ('first_name', 'last_name', 'email', 'phone_number')
+
+        def pre_save(self, obj):
+            obj = super(OrganizationDriverCRUDL.Create, self).pre_save(obj)
+            obj.organization = self.request.user.profile.organization
+            return obj
 
     class List(SmartListView):
-        pass
+        fields = ('first_name', 'last_name', 'email', 'phone_number')
 
 
