@@ -8,11 +8,13 @@ class VehicleCRUDL(SmartCRUDL):
     actions = ('create', 'list', )
 
     class Create(SmartCreateView):
+        fields = ('registration_number', 'make', 'model', 'engine_number', 'color', 'vehicle_owner')
         field_config = {
             'vehicle_owner': dict(help=mark_safe('If vehicle owner does not exist, <a href="/registration-unit/vehicleowner/create/">click here</a> to add new owner')),
         }
 
     class List(SmartListView):
+        fields = ('registration_number', 'make', 'model', 'engine_number', 'color', 'vehicle_owner')
         link_fields = ('registration_number', 'engine_number')
 
 

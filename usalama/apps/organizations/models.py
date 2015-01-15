@@ -17,13 +17,6 @@ class Organization(TimeStampedModel):
     def __unicode__(self):
         return self.name
 
-@with_author
-class VehicleMake(TimeStampedModel):
-    name = models.CharField(max_length=30, blank=False)
-
-    def __unicode__(self):
-        return self.name
-
 
 @with_author
 class OrganizationVehicle(TimeStampedModel):
@@ -39,7 +32,7 @@ class OrganizationVehicle(TimeStampedModel):
         Other = ChoiceItem('other', 'Other')
 
     registration_number = models.CharField(max_length=20, blank=False)
-    make = models.ForeignKey(VehicleMake, related_name='OrganizationVehicle')
+    make = models.ForeignKey('registration_unit.VehicleMake', related_name='OrganizationVehicle')
     model = models.CharField(max_length=20)
     engine_number = models.CharField(max_length=20)
     color = models.CharField(max_length=10, choices=ColorType.choices)
