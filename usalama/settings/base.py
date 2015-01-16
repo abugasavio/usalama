@@ -149,6 +149,7 @@ INSTALLED_APPS = (
     'django_extensions',
     'bootstrap3',
     # usalama apps
+    'usalama.apps.home',
     'usalama.apps.registration_unit',
     'usalama.apps.organizations',
     'usalama.apps.profile',
@@ -185,6 +186,9 @@ LOGGING = {
     }
 }
 
+#============================================================================
+# Smartmin Settings
+#============================================================================
 
 # create the smartmin CRUDL permissions on all objects
 PERMISSIONS = {
@@ -216,4 +220,8 @@ ANONYMOUS_USER_ID = -1
 
 # set this if you want to use smartmin's user login
 LOGIN_URL = '/users/login'
+
+#============================= End of Smartmin settings =============================
+
+LOGIN_REDIRECT_URL = '/'
 

@@ -11,6 +11,7 @@ urlpatterns = patterns('',
                        # admin:
                        url(r'^admin/', include(admin.site.urls)),
                        # .. other patterns ..
+                       url(r'^$', include('usalama.apps.home.urls')),
                        url(r'^users/', include('smartmin.users.urls')),
                        url(r'registration-unit/', include('usalama.apps.registration_unit.urls')),
                        url(r'organization/', include('usalama.apps.organizations.urls')),
