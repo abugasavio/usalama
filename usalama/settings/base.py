@@ -194,11 +194,21 @@ PERMISSIONS = {
         'delete', # can delete an object,
         'list'),  # can view a list of the objects
 }
+# Groups
+GROUP_REG_UNIT = 'Registration Unit Users'
+GROUP_ADMINS = 'Administrators'
+
 
 # assigns the permissions that each group should have, here creating an Administrator group with
 # authority to create and change users
 GROUP_PERMISSIONS = {
-    "Administrator": ('auth.user.*',)
+    GROUP_ADMINS: ('auth.user.*',),
+    GROUP_REG_UNIT: ('registration_unit.vehiclemake_create', 'registration_unit.vehiclemake_read',
+                     'registration_unit.vehiclemake_list', 'registration_unit.vehiclemake_update',
+                     'registration_unit.vehicleowner_create', 'registration_unit.vehicleowner_read',
+                     'registration_unit.vehicleowner_list', 'registration_unit.vehicleowner_update',
+                     'registration_unit.vehicle_create', 'registration_unit.vehicle_read',
+                     'registration_unit.vehicle_list', 'registration_unit.vehicle_update',)
 }
 
 # this is required by guardian

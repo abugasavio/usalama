@@ -1,5 +1,6 @@
 <!doctype html>
 <head>
+
   <meta charset="utf-8">
   <title>{% block title %}Smartmin{% endblock %}</title>
   <meta name="description" content="">
@@ -60,9 +61,19 @@
 		{% if perms.auth.user_list %}
 		<li><a href="/users/user/">Users</a></li>
 		{% endif %}
+
               </ul>
             </li>
           {% endif %}
+
+
+        {% if perms.registration_unit.vehicle_create %}
+            <li><a>Vehicles</a></li>
+            <li><a>Owners</a></li>
+        {% else %}
+             <li><a>Vehicles</a></li>
+             <li><a>Drivers</a></li>
+        {% endif %}
 	</ul>
 
 	<ul class="nav navbar-nav navbar-right">

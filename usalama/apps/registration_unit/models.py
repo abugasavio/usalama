@@ -38,11 +38,11 @@ class Vehicle(TimeStampedModel):
         Other = ChoiceItem('other', 'Other')
 
     registration_number = models.CharField(max_length=20, blank=False)
-    make = models.ForeignKey(VehicleMake, related_name='registrationunit_vehicle')
+    make = models.ForeignKey(VehicleMake, related_name='registrationunit_vehicle_make')
     model = models.CharField(max_length=20)
     engine_number = models.CharField(max_length=20)
     color = models.CharField(max_length=10, choices=ColorType.choices)
-    vehicle_owner = models.ForeignKey(VehicleOwner, related_name='registrationunit_vehicle')
+    vehicle_owner = models.ForeignKey('VehicleOwner', related_name='registrationunit_vehicle')
 
     def __unicode__(self):
         return self.registration_number

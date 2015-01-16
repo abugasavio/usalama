@@ -32,7 +32,7 @@ class OrganizationVehicle(TimeStampedModel):
         Other = ChoiceItem('other', 'Other')
 
     registration_number = models.CharField(max_length=20, blank=False)
-    make = models.ForeignKey('registration_unit.VehicleMake', related_name='OrganizationVehicle')
+    make = models.ForeignKey('registration_unit.VehicleMake', related_name='organization_vehicle')
     model = models.CharField(max_length=20)
     engine_number = models.CharField(max_length=20)
     color = models.CharField(max_length=10, choices=ColorType.choices)
