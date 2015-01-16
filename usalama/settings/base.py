@@ -151,7 +151,7 @@ INSTALLED_APPS = (
     # usalama apps
     'usalama.apps.home',
     'usalama.apps.registration_unit',
-    'usalama.apps.organizations',
+    'usalama.apps.organization',
     'usalama.apps.profile',
 )
 

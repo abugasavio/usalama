@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from usalama.apps.organizations.views import Signup
+from usalama.apps.organization.views import Signup
 from django.contrib import admin
 # admin
 admin.autodiscover()
@@ -14,7 +14,7 @@ urlpatterns = patterns('',
                        url(r'^$', include('usalama.apps.home.urls')),
                        url(r'^users/', include('smartmin.users.urls')),
                        url(r'registration-unit/', include('usalama.apps.registration_unit.urls')),
-                       url(r'organization/', include('usalama.apps.organizations.urls')),
+                       url(r'organization/', include('usalama.apps.organization.urls')),
                        url(r'^grappelli/', include('grappelli.urls')),
                        url(r'signup/$', Signup.as_view(), name='users.organization_signup'),
                        )
