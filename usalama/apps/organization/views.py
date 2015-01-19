@@ -26,7 +26,7 @@ class Signup(FormView):
 class OrganizationVehicleCRUDL(SmartCRUDL):
     model = OrganizationVehicle
     actions = ('create', 'list', 'update',)
-    permissions = False
+    permissions = True
 
     class Create(SmartCreateView):
         fields = ('registration_number', 'make', 'model', 'engine_number', 'color')
@@ -43,6 +43,7 @@ class OrganizationVehicleCRUDL(SmartCRUDL):
 class OrganizationDriverCRUDL(SmartCRUDL):
     model = OrganizationDriver
     actions = ('create', 'list', 'update',)
+    permissions = True
 
     class Create(SmartCreateView):
         fields = ('first_name', 'last_name', 'email', 'phone_number')

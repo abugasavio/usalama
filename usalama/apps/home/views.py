@@ -9,4 +9,4 @@ class HomeRedirectView(RedirectView):
         if settings.GROUP_REG_UNIT in self.request.user.groups.all():
             return reverse('registration_unit.vehicle_list')
         else:
-            return reverse('organizations.organizationvehicle_list')
+            return reverse('organization.organizationvehicle_list')
