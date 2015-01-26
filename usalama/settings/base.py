@@ -148,6 +148,7 @@ INSTALLED_APPS = (
     'smartmin.users',
     'django_extensions',
     'bootstrap3',
+    'menu',
     # usalama apps
     'usalama.apps.home',
     'usalama.apps.registration_unit',

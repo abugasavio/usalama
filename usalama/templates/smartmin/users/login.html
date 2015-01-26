@@ -34,6 +34,7 @@
         {% if allow_email_recovery %}
         <span class="pull-right" style="padding-top:7px;padding-right:150px;"><a href="{% url 'users.user_forget' %}">{% trans "Forgot Password?" %}</a></span>
         {% endif %}
+        <div style="padding-top:7px;">Don't have an account? <a href="{% url 'users.organization_signup' %}">{% trans "Signup" %}</a></div>
       </fieldset>
     </form>
   </div>

@@ -2,7 +2,7 @@
 <head>
 
   <meta charset="utf-8">
-  <title>{% block title %}Smartmin{% endblock %}</title>
+  <title>{% block title %}Usalama{% endblock %}</title>
   <meta name="description" content="">
   <meta name="author" content="">
   
@@ -33,6 +33,9 @@
 
 <body>
 
+{% load menu %}
+    {{ menus }}
+    {% with menu=menus.main %}{% include "menu.html" %}{% endwith %}
   {% block navbar %}
   <header class="navbar navbar-static-top navbar-inverse" role="banner">
     <div class="container">
@@ -53,6 +56,7 @@
       {% block navigation %}
       <nav class="collapse navbar-collapse" id="smartmin-navbar-collapse" role="navigation">
 	<ul class="nav navbar-nav">
+
 	  {% if perms.nsms.text_list %}
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Configuration<b class="caret"></b></a>
@@ -64,14 +68,12 @@
               </ul>
             </li>
         {% endif %}
-        {% if perms.registration_unit.vehicle_create %}
-            <li><a href="{% url 'registration_unit.vehicle_list'%}">Vehicles</a></li>
-            <li><a href="{% url 'registration_unit.vehicleowner_list'%}">Owners</a></li>
-        {% else %}
-             <li><a href="{% url 'organization.organizationvehicle_list'%}">Vehicles</a></li>
-             <li><a href="{% url 'organization.organizationvehicle_list'%}">Drivers</a></li>
-        {% endif %}
+        {% load menu %}{% generate_menu %}
+        {% with menu=menus.main %}{% include "bootstrap-navbar.html" %}{% endwith %}
+
 	</ul>
+
+
 
 	<ul class="nav navbar-nav navbar-right">
 	  {% block login %}
